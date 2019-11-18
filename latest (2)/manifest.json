@@ -1,0 +1,44 @@
+{
+	"manifest_version": 2,
+	"name": "Krunker Cheat IceHacks",
+	"version": "0.1.7",
+	"description": "Krunker cheats made by IceHacks and zbot473",
+	"permissions": [
+		"webRequest",
+		"*://*/*",
+		"webRequestBlocking",
+		"tabs",
+		"declarativeContent",
+		"activeTab"
+	],
+	"icons": {
+		"512": "./files/images/icon.png"
+	},
+	"externally_connectable": {
+		"matches": [
+			"*://krunker.io/*"
+		]
+	},
+	"background": {
+		"scripts": [
+			"thirdParty/cryptology.js",
+			"background.js"
+		]
+	},
+	"web_accessible_resources": [
+		"files/*"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"content_scripts": [
+		{
+			"matches": [
+				"*://krunker.io/",
+				"*://krunker.io/?game*"
+			],
+			"run_at": "document_start",
+			"js": [
+				"content.js"
+			]
+		}
+	]
+}
